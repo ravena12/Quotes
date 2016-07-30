@@ -1,0 +1,22 @@
+#b1  {
+	border: 1px solid black;
+	width: 300px;
+	height: 600px;
+	overflow: scroll;
+	display: inline-block;
+}
+
+#favorites  {
+	border: 1px solid black;
+	width: 300px;
+	height: 400px;
+	overflow: scroll;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.inner, .inner2 {
+	padding: 10px;
+	margin: 10px;
+	border : 1px solid black;
+}

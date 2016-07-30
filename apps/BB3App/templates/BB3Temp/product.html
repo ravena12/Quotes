@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+	<a href = "{% url 'my_quote_home' %}"> Dashboard</a> | <a href = "{% url 'my_quote_logout' %}"> Logout</a>
+	
+
+<h2> Posts by {{wishes.creator_quotes.first_name}}</h2>
+<h2> Count: {{count}} </h2>
+
+{% for x in quotes %}
+	<p>{{x}}</p>
+	{% endfor %}
+
+
+
+
+	
+
+
+</body>
+</html>

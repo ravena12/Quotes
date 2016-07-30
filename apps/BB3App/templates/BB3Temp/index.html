@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Traveler!</title>
+</head>
+<body>
+
+	<h1>Welcome!</h1>
+
+	<h3>Register</h3>
+	<form action="{% url 'my_register_process' %}" method="POST">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<td><label>First Name:</label></td>
+				<td><input type="text" name="first_name" placeholder="First Name"></td>
+			</tr>
+			<tr>
+				<td><label>Last Name:</label></td>
+				<td><input type="text" name="last_name" placeholder="Last Name"></td>
+			</tr>
+			<tr>
+				<td><label>Username:</label></td>
+				<td><input type="text" name="username" placeholder="Username"></td>
+			</tr>
+			<tr>
+				<td><label>Password:</label></td>
+				<td><input  type="password" name="password" placeholder="Password"></td>
+			</tr>
+			<tr>
+				<td><label>Confirm Password:</label></td>
+				<td><input type="password" name="confirm" placeholder="Confirm"></td>
+			</tr>
+			<tr>
+				<td><label>Date of Birth:</label></td>
+				<td><input type="date" name="date"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="submit" value="Create Account"></td>
+			</tr>
+			<hr>
+		</table>
+	</form>
+	<h3> Login </h3>
+	<form action="{% url 'my_quote_login' %}" method = 'POST'>
+	{% csrf_token %}
+	<table>
+		<tr>
+			<th>Username:</th>
+			<th>Password:</th>
+			<th></th>
+		</tr>
+		<tr>
+			<td><input type="text" name="username" placeholder="Username"></td>
+			<td><input type="password" name="password" placeholder="Password"></td>
+			<td><input  type="submit" name="enter" value="Log In"></td>
+		</tr>
+	</table>
+
+
+	
+	</form>
+		{% if messages %}
+			<ul class="messages">
+	{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+					
+				</form>
+			</div>
+		</div>	
+	</div>
+
+</body>
+</html>

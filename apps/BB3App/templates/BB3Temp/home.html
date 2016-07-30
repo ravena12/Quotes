@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quotes Dashboard</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'BB3CSS/BB3.css' %}"  charset="utf-8">
+</head>
+<body>
+	<a href = "{% url 'my_quote_logout' %}"> Logout</a>
+
+	<h4> Welcome {{ c.first_name}}! </h4>
+	<div id="b1">
+	<p> Quotable Quotes </p>
+	<hr>
+		{% for item in test %}
+			{{item.quoted_by}}: {{item.message}}
+			<p>posted by: <a href ="{% url 'my_quote_product' item.id %}"> {{item.creator_quotes.first_name}}</a>
+			<a href ="{% url 'my_quote_join' item.id %}"> Add to my List!</a></p>
+			<br><hr>
+		{% endfor %}
+	</div>
+	<div id="favorites">
+		<p> My Favorites </p>
+		<div class='inner'>
+			{% for item in oo %}
+				{{item.quoted_by}}: {{item.message}}
+				<p> posted by: <a href ="{% url 'my_quote_product' item.id %}"> {{item.creator_quotes.first_name}}</a><a href ="{% url 'my_quote_destroy' item.id %}"> <p>Remove from my list!</p></a>
+				<hr>
+				{% endfor %}
+		</div>
+		<div class='inner'>
+			{% for item in others %}
+				<p><a href ="{% url 'my_quote_join' item.id %}"> Add to my Wish List!</a></p>
+				{% endfor %}
+		</div>
+	</div>
+
+	<hr>
+	<p> Contribute a Quote </p>
+	<form action ="{% url 'my_quote_add' %}" method = 'post'>
+	{% csrf_token %}
+		<p>Quoted By: <input type='text' name ='quoted_by'></p>
+		<p>message: <textarea name='message'></textarea></p>
+		<input type ='submit' value='submit'>
+	</form>
+	{% if messages %}
+			<ul class="messages">
+		{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </li>
+		{% endfor %}
+			</ul>
+		{% endif %}
+
+				{% for item in oneu %}
+				 <a href ="{% url 'my_quote_delete' item.id %}"> <p>delete option </p></a>
+				{% endfor %}
+	
+
+
+	
+</body>
+</html>
